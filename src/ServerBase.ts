@@ -1,15 +1,15 @@
-import * as express from 'express' ;
-import * as request from 'request-promise-native' ;
-import {ConfLoader} from './ConfLoader' ;
-import {UtilsSecu} from './UtilsSecu' ;
-import * as jose from 'node-jose' ;
-import * as _  from 'lodash' ;
-import * as Util  from 'util' ;
-import * as http from 'http' ;
-import * as assert from 'assert' ;
-import * as fs  from 'fs-extra' ;
-import {RequestContext} from "./RequestContext" ;
-import {IApplicationConfiguration} from './IApplicationConfiguration';
+import * as express from 'express';
+import * as promBundle from 'express-prom-bundle';
+import * as fs from 'fs-extra';
+import * as http from 'http';
+import * as _ from 'lodash';
+import * as jose from 'node-jose';
+import * as request from 'request-promise-native';
+import * as Util from 'util';
+import { ConfLoader } from './ConfLoader';
+import { IApplicationConfiguration } from './IApplicationConfiguration';
+import { RequestContext } from "./RequestContext";
+import { UtilsSecu } from './UtilsSecu';
 
 export class ServerBase{
 
@@ -17,6 +17,10 @@ export class ServerBase{
 	public app:any ;
 	public secu:UtilsSecu ;
 	public server:http.Server ;
+	public metrics = promBundle({
+		includeMethod: true,
+		includePath: true
+	});
 
 	constructor(){
 		this.currentApp = {} ;
@@ -73,6 +77,8 @@ export class ServerBase{
 			this.currentApp.toErrRes = this.toErrRes ;
 			this.currentApp.toJsonRes = this.toJsonRes ;
 			this.secu = new UtilsSecu(this.currentApp) ;
+			this.currentApp.metrics = this.metrics ;
+			this.app.use(this.metrics)
 			this.currentApp.secu = this.secu ;
 			this.app.use( (req, res , next) => {
 				this.headers.forEach((data)=>{

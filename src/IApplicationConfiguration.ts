@@ -1,7 +1,8 @@
 import * as express from 'express';
-import { UtilsSecu } from './UtilsSecu';
+import * as promBundle from 'express-prom-bundle';
 import * as http from 'http';
-import * as Jose from 'node-jose' ;
+import * as Jose from 'node-jose';
+import { UtilsSecu } from './UtilsSecu';
 
 export interface IApplicationConfiguration {
 
@@ -11,6 +12,6 @@ export interface IApplicationConfiguration {
     toErrRes?: { (err: any, code?: number): any };
     toJsonRes?: { (objs: any, meta?: any): any };
     secu?: UtilsSecu;
-    
+    metrics?: promBundle;
     conf?: any;
 }

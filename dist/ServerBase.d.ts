@@ -1,13 +1,14 @@
 /// <reference types="node" />
 import * as express from 'express';
-import { UtilsSecu } from './UtilsSecu';
 import * as http from 'http';
 import { IApplicationConfiguration } from './IApplicationConfiguration';
+import { UtilsSecu } from './UtilsSecu';
 export declare class ServerBase {
     currentApp: IApplicationConfiguration;
     app: any;
     secu: UtilsSecu;
     server: http.Server;
+    metrics: any;
     constructor();
     protected readonly parentProcessHandler: (msg: any) => void;
     protected sendToParentProcess(msg: any): void;
