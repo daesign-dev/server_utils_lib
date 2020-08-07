@@ -1,8 +1,7 @@
-import {HttpAbstractService} from "./HttpAbstractService"
-import {IHttpResult} from "./IHttpResult" ;
-import {UtilsSecu} from "../UtilsSecu" ;
-import {CtxInterpretor} from "../CtxInterpretor" ;
-import {MiddleWareConfig} from "./MiddleWareConfig" ;
+import { CtxInterpretor } from "../CtxInterpretor";
+import { HttpAbstractService } from "./HttpAbstractService";
+import { IHttpResult } from "./IHttpResult";
+import { MiddleWareConfig } from "./MiddleWareConfig";
 
 export class HttpServiceBase<T> extends HttpAbstractService {
   constructor(
@@ -90,7 +89,7 @@ protected  globalCtxInt:CtxInterpretor = new CtxInterpretor(process.env) ;
   }
 
   public post(
-    body: T ,
+    body: T | T[] ,
     headers: any = {},
     query: string = ''
   ): Promise<IHttpResult<T>> {
@@ -117,7 +116,7 @@ protected  globalCtxInt:CtxInterpretor = new CtxInterpretor(process.env) ;
   }
   
   public put(
-    body: T ,
+    body: T | T[],
     headers: any = {},
     query: string = ''
   ): Promise<IHttpResult<T>> {

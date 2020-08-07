@@ -1,6 +1,6 @@
+import { CtxInterpretor } from "../CtxInterpretor";
 import { HttpAbstractService } from "./HttpAbstractService";
 import { IHttpResult } from "./IHttpResult";
-import { CtxInterpretor } from "../CtxInterpretor";
 import { MiddleWareConfig } from "./MiddleWareConfig";
 export declare class HttpServiceBase<T> extends HttpAbstractService {
     constructor(conf: any);
@@ -12,8 +12,8 @@ export declare class HttpServiceBase<T> extends HttpAbstractService {
     getMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
     patch(body: any, headers?: any, query?: string): Promise<IHttpResult<T>>;
     patchMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
-    post(body: T, headers?: any, query?: string): Promise<IHttpResult<T>>;
+    post(body: T | T[], headers?: any, query?: string): Promise<IHttpResult<T>>;
     postMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
-    put(body: T, headers?: any, query?: string): Promise<IHttpResult<T>>;
+    put(body: T | T[], headers?: any, query?: string): Promise<IHttpResult<T>>;
     putMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
 }
