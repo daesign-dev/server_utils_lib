@@ -30,16 +30,8 @@
     "version": "npm run updateMaster && git add -A ",
     "postversion": "git push && git push --tags "
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HF-dev/utils.git"
-  },
-  "author": "hf-dev",
+  "author": "daesign-dev",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HF-dev/utils/issues"
-  },
-  "homepage": "https://github.com/HF-dev/utils#readme",
   "dependencies": {
     "assert": "^1.4.1",
     "express": "^4.16.1",
