@@ -89,7 +89,7 @@ protected  globalCtxInt:CtxInterpretor = new CtxInterpretor(process.env) ;
   }
 
   public post(
-    body: T | T[] ,
+    body: any,
     headers: any = {},
     query: string = ''
   ): Promise<IHttpResult<T>> {
@@ -116,7 +116,7 @@ protected  globalCtxInt:CtxInterpretor = new CtxInterpretor(process.env) ;
   }
   
   public put(
-    body: T | T[],
+    body: any,
     headers: any = {},
     query: string = ''
   ): Promise<IHttpResult<T>> {

@@ -12,8 +12,8 @@ export declare class HttpServiceBase<T> extends HttpAbstractService {
     getMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
     patch(body: any, headers?: any, query?: string): Promise<IHttpResult<T>>;
     patchMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
-    post(body: T | T[], headers?: any, query?: string): Promise<IHttpResult<T>>;
+    post(body: any, headers?: any, query?: string): Promise<IHttpResult<T>>;
     postMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
-    put(body: T | T[], headers?: any, query?: string): Promise<IHttpResult<T>>;
+    put(body: any, headers?: any, query?: string): Promise<IHttpResult<T>>;
     putMiddleware: (config: MiddleWareConfig) => (req: any, res: any, next: any) => void;
 }
