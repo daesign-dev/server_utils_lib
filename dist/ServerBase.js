@@ -72,6 +72,7 @@ class ServerBase {
             this.currentApp.toErrRes = this.toErrRes;
             this.currentApp.toJsonRes = this.toJsonRes;
             this.secu = new UtilsSecu_1.UtilsSecu(this.currentApp);
+            this.metrics.promClient.collectDefaultMetrics();
             this.currentApp.metrics = this.metrics;
             this.app.use(this.metrics);
             this.currentApp.secu = this.secu;
