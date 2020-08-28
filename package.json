@@ -6,7 +6,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc",
+    "build": "tsc",
     "testing": "node dist/test.js",
     "rmDist": "rm -r dist",
     "devDistToMaster": "git checkout dev -- dist",
