@@ -4,8 +4,8 @@ export declare class CtxInterpretor {
     endPatern: string;
     splitPatern: string;
     constructor(context: any);
-    private setEnv(varKey, removeUnknownVar?);
-    private setGlobalEnv(stringKey, removeUnknownVar?);
+    private setEnv;
+    private setGlobalEnv;
     updateArrEnv(obj: any[], clone?: boolean, removeUnknownVar?: boolean): any;
     updateEnv(obj: any, clone?: boolean, removeUnknownVar?: boolean): any;
 }

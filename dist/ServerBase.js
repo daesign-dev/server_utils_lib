@@ -1,16 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const request = require("request-promise-native");
-const ConfLoader_1 = require("./ConfLoader");
-const UtilsSecu_1 = require("./UtilsSecu");
-const jose = require("node-jose");
-const _ = require("lodash");
-const Util = require("util");
+const promBundle = require("express-prom-bundle");
 const fs = require("fs-extra");
+const _ = require("lodash");
+const jose = require("node-jose");
+const request = require("request-promise-native");
+const Util = require("util");
+const ConfLoader_1 = require("./ConfLoader");
 const RequestContext_1 = require("./RequestContext");
+const UtilsSecu_1 = require("./UtilsSecu");
 class ServerBase {
     constructor() {
+        this.metrics = promBundle({
+            includeMethod: true,
+            includePath: true
+        });
         this.headers = [
             ["Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE"],
             ["Access-Control-Allow-Origin", "*"],
@@ -67,6 +72,9 @@ class ServerBase {
             this.currentApp.toErrRes = this.toErrRes;
             this.currentApp.toJsonRes = this.toJsonRes;
             this.secu = new UtilsSecu_1.UtilsSecu(this.currentApp);
+            this.metrics.promClient.collectDefaultMetrics();
+            this.currentApp.metrics = this.metrics;
+            this.app.use(this.metrics);
             this.currentApp.secu = this.secu;
             this.app.use((req, res, next) => {
                 this.headers.forEach((data) => {

@@ -1,1 +1,1 @@
-{"version":3,"file":"HttpAbstractAggregaService.js","sourceRoot":"","sources":["../../src/httpClient/HttpAbstractAggregaService.ts"],"names":[],"mappings":";;AAEA;IACE,YACE,IAAQ,IACP,CAAC;CACL;AAJD,gEAIC"}
+{"version":3,"file":"HttpAbstractAggregaService.js","sourceRoot":"","sources":["../../src/httpClient/HttpAbstractAggregaService.ts"],"names":[],"mappings":";;AAEA,MAAa,0BAA0B;IACrC,YACE,IAAQ,IACP,CAAC;CACL;AAJD,gEAIC"}
